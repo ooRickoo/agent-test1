@@ -52,8 +52,10 @@ cp .env.example .env
 
 Edit `.env` with your API keys:
 ```
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
-SHODAN_API_KEY=your_shodan_api_key_here  # Optional
+ANTHROPIC_API_KEY=your_api_key_here
+VT_API_KEY=your_api_key_here
+ABUSEIPDB_API_KEY=your_api_key_here
+SHODAN_API_KEY=your_api_key_here
 ```
 
 ## Usage
