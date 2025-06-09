@@ -489,12 +489,16 @@ def process_query(user_input: str, chains: Dict[str, Any]) -> None:
         print("\nRunning Basic Analysis...")
         simple_analysis = chains["simple"].invoke({"input": str(analysis_results)})
         print("Basic Analysis Results:")
-        print(simple_analysis)
+        # Extract just the content from the response
+        basic_content = simple_analysis.content if hasattr(simple_analysis, 'content') else str(simple_analysis)
+        print(basic_content)
         
         print("\nRunning Detailed Analysis...")
         detailed_analysis = chains["sequential"].invoke({"input": str(analysis_results)})
         print("Detailed Analysis Results:")
-        print(detailed_analysis)
+        # Extract just the content from the response
+        detailed_content = detailed_analysis.content if hasattr(detailed_analysis, 'content') else str(detailed_analysis)
+        print(detailed_content)
         
         print("\nRunning Contextual Analysis...")
         # Get the memory object
@@ -509,7 +513,9 @@ def process_query(user_input: str, chains: Dict[str, Any]) -> None:
             "chat_history": chat_history
         })
         print("Contextual Analysis Results:")
-        print(contextual_analysis)
+        # Extract just the content from the response
+        contextual_content = contextual_analysis.content if hasattr(contextual_analysis, 'content') else str(contextual_analysis)
+        print(contextual_content)
         
     except Exception as e:
         print(f"❌ Error during analysis: {str(e)}")
